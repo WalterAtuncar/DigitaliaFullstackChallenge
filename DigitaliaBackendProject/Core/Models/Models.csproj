@@ -10,4 +10,9 @@
     <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Response\" />
+    <Folder Include="Request\" />
+  </ItemGroup>
+
 </Project>
