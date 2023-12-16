@@ -1,5 +1,5 @@
 ﻿using BusinessLogic.SurveyOptions;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 
@@ -7,6 +7,7 @@ namespace Digitalia.Fullstack.Challenge.Controllers.SurveyOptions
 {
     [Route("api/surveyoptions")]
     [ApiController]
+    [Authorize]
     public class surveyoptionsController : ControllerBase
     {
         private ISurveyoptionsLogic _surveyoptions;

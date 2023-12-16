@@ -1,5 +1,5 @@
 ﻿using BusinessLogic.Users;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 
@@ -17,6 +17,7 @@ namespace Digitalia.Fullstack.Challenge.Controllers.Users
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult GetList()
         {
             _ResponseDTO = new ResponseDTO();
@@ -32,6 +33,7 @@ namespace Digitalia.Fullstack.Challenge.Controllers.Users
 
         [HttpGet]
         [Route("{id:int}")]
+        [Authorize]
         public IActionResult GetById(int id)
         {
             _ResponseDTO = new ResponseDTO();
@@ -46,6 +48,7 @@ namespace Digitalia.Fullstack.Challenge.Controllers.Users
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Insert([FromBody] Models.Entities.Users obj)
         {
             _ResponseDTO = new ResponseDTO();
@@ -60,6 +63,7 @@ namespace Digitalia.Fullstack.Challenge.Controllers.Users
         }
 
         [HttpPut]
+        [Authorize]
         public IActionResult Update([FromBody]  Models.Entities.Users obj)
         {
             _ResponseDTO = new ResponseDTO();

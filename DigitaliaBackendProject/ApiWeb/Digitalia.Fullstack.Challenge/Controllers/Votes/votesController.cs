@@ -1,5 +1,5 @@
 ﻿using BusinessLogic.Votes;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 
@@ -7,6 +7,7 @@ namespace Digitalia.Fullstack.Challenge.Controllers.Votes
 {
     [Route("api/votes")]
     [ApiController]
+    [Authorize]
     public class votesController : ControllerBase
     {
         private IVotesLogic _votes;

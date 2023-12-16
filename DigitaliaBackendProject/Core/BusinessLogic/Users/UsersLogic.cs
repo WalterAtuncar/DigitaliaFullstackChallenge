@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JWT.Encrypt;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,10 +11,12 @@ namespace BusinessLogic.Users
     public class UsersLogic : IUsersLogic
     {
         private IUnitOfWork _unitOfWork;
+        private IEncryptServices _encryptServices;
 
-        public UsersLogic(IUnitOfWork unitOfWork)
+        public UsersLogic(IUnitOfWork unitOfWork, IEncryptServices encryptServices)
         {
             _unitOfWork = unitOfWork;
+            _encryptServices = encryptServices;
         }
 
         public Models.Entities.Users GetById(int id)
@@ -28,6 +31,11 @@ namespace BusinessLogic.Users
 
         public int Insert(Models.Entities.Users obj)
         {
+            if (!String.IsNullOrEmpty(obj.PasswordHash))
+            {
+                obj.PasswordHash = _encryptServices.Encrypt(obj.PasswordHash);
+            }
+            obj.CreationDate = DateTime.Now;
             return _unitOfWork.IUsers.Insert(obj);
         }
 
