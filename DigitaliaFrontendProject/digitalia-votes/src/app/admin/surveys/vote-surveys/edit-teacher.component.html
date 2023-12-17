@@ -1,0 +1,47 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header" *ngFor="let breadscrum of breadscrums">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="breadscrum.title" [items]="breadscrum.items" [active_item]="breadscrum.active">
+      </app-breadcrumb>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">       
+          <div class="body">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+              
+                  <div class="m-4">
+                    <h3 style="font-weight: bold;">{{ rowData.title }}</h3>
+                    <p style="font-weight: bold;">{{ rowData.description }}</p>
+                    <p>{{ rowData.question }}</p>
+      
+                    <!-- RadioButton para Votación -->
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                        <div class="m-b-20" >
+                          <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedOption" [disabled]="block">
+                            <mat-radio-button [value]="1">{{ voteOptions[0] }}</mat-radio-button>
+                            <mat-radio-button [value]="2">{{ voteOptions[1] }}</mat-radio-button>
+                            <mat-radio-button [value]="3">{{ voteOptions[2] }}</mat-radio-button>
+                          </mat-radio-group>
+                        </div>
+                      </div>
+                    </div>
+      
+                    <!-- Botones Guardar y Cancelar (cambiar según sea necesario) -->
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                        <button class="btn-space" mat-raised-button color="primary" (click)="submitVote()" [disabled]="block">Guardar</button>
+                        <button type="button" mat-button>Cancelar</button>
+                      </div>
+                    </div>
+                    <p style="font-weight: bold;">{{ txtLabel }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -2,6 +2,7 @@ using BusinessLogic.Login;
 using BusinessLogic.SurveyOptions;
 using BusinessLogic.Surveys;
 using BusinessLogic.Users;
+using BusinessLogic.Votes;
 using JWT.Encrypt;
 using JWT.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -16,6 +17,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 var jwtKey = builder.Configuration.GetValue<string>("jwtPassword");
 var key = Encoding.ASCII.GetBytes(jwtKey);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader());
+});
 
 builder.Services.AddAuthentication(x =>
 {
@@ -77,6 +86,7 @@ builder.Services.AddTransient<ILoginLogic, LoginLogic>();
 builder.Services.AddTransient<IUsersLogic, UsersLogic>();
 builder.Services.AddTransient<ISurveyoptionsLogic, SurveyOptionsLogic>();
 builder.Services.AddTransient<ISurveysLogic, SurveysLogic>();
+builder.Services.AddTransient<IVotesLogic, VotesLogic>();
 builder.Services.AddTransient<IEncryptServices, EncryptServices>();
 builder.Services.AddTransient<ITokenServices, TokenServices>();
 
@@ -90,6 +100,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthentication();
 app.UseAuthorization();

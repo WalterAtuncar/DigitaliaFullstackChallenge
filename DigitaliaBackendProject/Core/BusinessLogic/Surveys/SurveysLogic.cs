@@ -28,6 +28,7 @@ namespace BusinessLogic.Surveys
 
         public int Insert(Models.Entities.Surveys obj)
         {
+            obj.CreationDate = DateTime.Now;
             return _unitOfWork.ISurveys.Insert(obj);
         }
 

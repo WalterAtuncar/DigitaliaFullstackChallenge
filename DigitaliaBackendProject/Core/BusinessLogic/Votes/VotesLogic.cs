@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Models.Request;
+using Models.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,14 +27,25 @@ namespace BusinessLogic.Votes
             return _unitOfWork.IVotes.GetList();
         }
 
+        public IEnumerable<result> getResults(int id)
+        {
+            return _unitOfWork.IVotes.getResults(id);
+        }
+
         public int Insert(Models.Entities.Votes obj)
         {
+            obj.VoteDate = DateTime.Now;
             return _unitOfWork.IVotes.Insert(obj);
         }
 
         public bool Update(Models.Entities.Votes obj)
-        {
+        {            
             return _unitOfWork.IVotes.Update(obj);
+        }
+
+        public int validateVote(validateVote obj)
+        {
+            return _unitOfWork.IVotes.validateVote(obj);
         }
     }
 }

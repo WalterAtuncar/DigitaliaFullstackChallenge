@@ -32,6 +32,21 @@ namespace Digitalia.Fullstack.Challenge.Controllers.Votes
         }
 
         [HttpGet]
+        [Route("getResults/{id:int}")]
+        public IActionResult getResults(int id)
+        {
+            _ResponseDTO = new ResponseDTO();
+            try
+            {
+                return Ok(_ResponseDTO.Success(_ResponseDTO, _votes.getResults(id)));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e.Message));
+            }
+        }
+
+        [HttpGet]
         [Route("{id:int}")]
         public IActionResult GetById(int id)
         {
@@ -73,5 +88,22 @@ namespace Digitalia.Fullstack.Challenge.Controllers.Votes
                 return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e.Message));
             }
         }
+
+        [HttpPost]
+        [Route("validateVote")]
+        public IActionResult validateVote([FromBody] Models.Request.validateVote obj)
+        {
+            _ResponseDTO = new ResponseDTO();
+            try
+            {
+                var result = _votes.validateVote(obj);
+                return Ok(_ResponseDTO.Success(_ResponseDTO, result));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(_ResponseDTO.Failed(_ResponseDTO, e.Message));
+            }
+        }
+        
     }
 }

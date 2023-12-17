@@ -1,0 +1,14 @@
+<div class="file-drop-area">
+  <button mat-raised-button color="primary">Choose file</button>
+  {{imageError}}
+  <!-- <span>{{file ? file.name : ' or drag and drop file here' }}</span> -->
+  <input class="file-input" type="file" (change)="fileChangeEvent($event)">
+  <ng-container *ngIf="isImageSaved; else elseTemplate">
+    <br><br><br>
+    <img [src]="cardImageBase64" width="300" />
+  </ng-container>
+  <ng-template #elseTemplate>
+    <br><br><br>
+    <img src="assets/images/user/user-placeholder.png" width="200" class="img-responsive">
+  </ng-template>
+</div>

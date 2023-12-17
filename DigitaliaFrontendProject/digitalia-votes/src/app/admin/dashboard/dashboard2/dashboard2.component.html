@@ -1,0 +1,33 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header" *ngFor="let breadscrum of breadscrums">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="breadscrum.title" [items]="breadscrum.items" [active_item]="breadscrum.active">
+      </app-breadcrumb>
+    </div>   
+
+    <div class="row clearfix" *ngFor="let survey of surveys">     
+      <!-- area chart -->
+      <div class="col-xl-12 col-lg-8 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="header">
+                <h2>{{ survey.title }} - {{ survey.question }}</h2>
+                <button mat-button [matMenuTriggerFor]="menu" class="header-dropdown">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">                    
+                </mat-menu>
+            </div>
+            <div class="body">
+              <apx-chart [series]="survey.chartOptions.series" [chart]="survey.chartOptions.chart"
+              [xaxis]="survey.chartOptions.xaxis">
+              </apx-chart>
+            </div>
+        </div>
+    </div>
+    
+      <!-- area chart -->
+    </div> 
+
+  </div>
+</section>

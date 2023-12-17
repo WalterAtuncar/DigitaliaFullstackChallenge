@@ -1,0 +1,22 @@
+{
+  "MENUITEMS": {
+    "MAIN": {
+      "TEXT": "Principal"
+    },
+    "DASHBOARD": {
+      "TEXT": "Resultados",
+      "LIST": {        
+        "DASHBOARD2": "Dashboard"       
+      }
+    },
+    "TEACHERS": {
+      "TEXT": "Encuestas",
+      "LIST": {
+        "ALL-TEACHERS": "Todas las Encuestas",
+        "ADD-TEACHER": "Agregar usuario",
+        "EDIT-TEACHER": "Editar usuario",
+        "ABOUT-TEACHER": "Sobre el usuario"
+      }
+    }    
+  }
+}
