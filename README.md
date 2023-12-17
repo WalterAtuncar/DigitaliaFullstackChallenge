@@ -222,6 +222,7 @@ GO
 - Instale las dependencias necesarias ejecutando `dotnet restore`.
 
 	## Ejecución del Proyecto
+	#BACKEND
 - Ingresar a la ruta "DigitaliaFullstackChallenge\DigitaliaBackendProject\ApiWeb\Digitalia.Fullstack.Challenge"
 - Ejecutar Digitalia.Fullstack.Challenge.sln 
 - Compile el proyecto.
@@ -229,6 +230,7 @@ GO
 - Ejecutar todas las pruebas.
 - Ejecute el proyecto Digitalia.Fullstack.Challenge.
 
+  	#FRONTEND
 - Ingresar a la ruta "DigitaliaFullstackChallenge\DigitaliaFrontendProject\digitalia-votes"
 - Ejecutar git bash el comando para instalar dependencias "npm install"
 - Ejecutar el comando para levantar el proyecto "ng serve -o"
