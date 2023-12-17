@@ -22,6 +22,7 @@ El proyecto "Digitalia.Fullstack.Challenge" es una aplicación de votación y en
 - Simplicidad y Flexibilidad: Proporciona una manera sencilla de mapear resultados de consultas a objetos.
 
 #CREACION DE BADE DE DATOS Y STORE PROCEDURES
+##
 CREATE DATABASE DigitaliaVotes;
 GO
 
